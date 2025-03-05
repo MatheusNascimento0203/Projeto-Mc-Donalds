@@ -2,13 +2,15 @@ import { notFound } from "next/navigation";
 
 import { getRestaurantBySlug } from "@/data/get-restaurant-by-slug";
 
+import RestaurantHeader from "./components/header";
+
 interface RestauranteMenuPageProps {
   params: Promise<{ slug: string }>;
   searchParams: Promise<{ consumptionMethod: string }>;
 }
 
 const isConsumptionMethod = (consumptionMethod: string) => {
-  return ["DINE_IN", "TAKEAWAY"].includes(consumptionMethod);
+  return ["DINE_IN", "TAKEAWAY"].includes(consumptionMethod.toUpperCase());
 };
 
 const RestauranteMenuPage = async ({
@@ -21,15 +23,14 @@ const RestauranteMenuPage = async ({
   if (!restaurant) {
     return notFound();
   }
-
   if (!isConsumptionMethod(consumptionMethod)) {
     return notFound();
   }
 
   return (
-    <h1>
-      {slug} {consumptionMethod}
-    </h1>
+    <div>
+      <RestaurantHeader restaurant={restaurant} />
+    </div>
   );
 };
 
