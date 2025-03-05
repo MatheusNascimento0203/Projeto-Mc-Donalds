@@ -16,7 +16,7 @@ const ProductHeader = ({ product }: ProductHeaderProps) => {
   const handleBackClick = () => router.back();
 
   return (
-    <div className="relative h-[300px] w-full">
+    <div className="relative min-h-[300px] w-full">
       <Button
         onClick={handleBackClick}
         variant={"secondary"}
@@ -28,7 +28,7 @@ const ProductHeader = ({ product }: ProductHeaderProps) => {
       <Image
         src={product.imageUrl}
         alt={product.name}
-        className="object-cover"
+        className="object-contain"
         fill
       />
       <Button
