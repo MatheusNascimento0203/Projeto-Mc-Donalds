@@ -57,6 +57,8 @@ model Order {
   id                Int               @id @default(autoincrement())
   restaurantId      String
   total             Float
+  name              String
+  cpf               String
   status            OrderStatus
   consumptionMethod ConsumptionMethod
   createdAt         DateTime          @default(now())
